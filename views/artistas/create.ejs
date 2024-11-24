@@ -1,0 +1,14 @@
+<h1>Cadastrar Novo Artista</h1>
+<form action="/artistas" method="POST">
+    <label for="nome">Nome do Artista:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="discos">Discos:</label>
+    <select id="discos" name="discos" multiple required>
+        <% discos.forEach(disco => { %>
+            <option value="<%= disco._id %>"><%= disco.titulo %></option>
+        <% }) %>
+    </select>
+
+    <button type="submit">Salvar</button>
+</form>

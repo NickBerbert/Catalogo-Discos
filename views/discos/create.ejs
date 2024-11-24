@@ -1,0 +1,22 @@
+<%- include('../layout', { body: '' }) %>
+
+<h1>Adicionar Novo Disco</h1>
+
+<form action="/disco" method="POST" enctype="multipart/form-data">
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" required>
+
+    <label for="anoLancamento">Ano de Lançamento:</label>
+    <input type="number" id="anoLancamento" name="anoLancamento" required>
+
+    <label for="capa">Capa (Imagem):</label>
+    <input type="file" id="capa" name="capa" required>
+
+    <label for="faixas">Faixas (separadas por vírgula):</label>
+    <textarea id="faixas" name="faixas" rows="4"></textarea>
+
+    <label for="generos">Gêneros (nomes separados por vírgula):</label>
+    <input type="text" id="generos" name="generos">
+
+    <button type="submit">Salvar</button>
+</form>

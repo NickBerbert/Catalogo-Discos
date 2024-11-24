@@ -1,0 +1,11 @@
+<%- include('../layout', { body: '' }) %>
+
+<h1>Lista de Artistas</h1>
+<ul>
+    <% artistas.forEach(artista => { %>
+        <li>
+            <h3><%= artista.nome %></h3>
+            <p>Discos: <%= artista.discos.map(disco => disco.titulo).join(', ') %></p>
+        </li>
+    <% }) %>
+</ul>

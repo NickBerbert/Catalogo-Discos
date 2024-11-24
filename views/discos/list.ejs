@@ -1,0 +1,14 @@
+<%- include('../layout', { body: '' }) %>
+
+<h1>Discos</h1>
+<a href="/disco/create">Adicionar Novo Disco</a>
+<ul>
+    <% discos.forEach(disco => { %>
+        <li>
+            <h3><%= disco.titulo %> (<%= disco.anoLancamento %>)</h3>
+            <img src="<%= disco.capa %>" alt="Capa de <%= disco.titulo %>" width="100">
+            <p>Gêneros: <%= disco.generos.map(g => g.nome).join(', ') %></p>
+            <p>Artistas: <%= disco.artistas.map(a => a.nome).join(', ') %></p>
+        </li>
+    <% }) %>
+</ul>

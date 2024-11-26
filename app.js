@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 app.use(express.static('public'));
 const dbURI = 'mongodb://localhost:27017/catalogo';
-
+const path = require('path');
 
 const Artista = require('./models/artistas'); // Caminho correto para o modelo
 
@@ -19,6 +19,7 @@ mongoose
 
 // Configurações
 app.set('view engine', 'ejs'); // Usando EJS para as views
+app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -29,7 +30,7 @@ const generoRoutes = require('./routes/generoRoute');
 
 app.use('/disco', discoRoutes);
 app.use('/artistas', artistasRoutes);
-app.use('/genero', generoRoutes);
+app.use('/generos', generoRoutes);
 app.get('/', (req, res) => {
     res.render('index'); // Renderiza a view "index.ejs"
 });

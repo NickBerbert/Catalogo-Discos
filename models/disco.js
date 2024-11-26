@@ -5,8 +5,7 @@ const discoSchema = new mongoose.Schema({
     anoLancamento: { type: Number, required: true },
     capa: String,
     faixas: [String],
-    generos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Genero' }],
-    artistas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artistas' }]
+    generos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Genero' }]
 });
 
 module.exports = mongoose.model('Disco', discoSchema);

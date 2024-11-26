@@ -1,14 +1,45 @@
 <%- include('../layout', { body: '' }) %>
-
+<link rel="stylesheet" href="/public/css/main.css">
+<div class="tab discos">
 <h1>Discos</h1>
 <a href="/disco/create">Adicionar Novo Disco</a>
 <ul>
+    <form action="/disco/filter" method="GET" style="margin-bottom: 20px;">
+        <div>
+            <label for="titulo">Filtrar por Título:</label>
+            <input type="text" id="titulo" name="titulo" value="<%= filtroTitulo || '' %>">
+        </div>
+
+        <div>
+            <label for="genero">Filtrar por Gênero:</label>
+            <input type="text" id="genero" name="genero" value="<%= filtroGenero || '' %>">
+        </div>
+
+        <div>
+            <label for="anoLancamento">Filtrar por Ano de Lançamento:</label>
+            <input type="number" id="anoLancamento" name="anoLancamento" value="<%= filtroAnoLancamento || '' %>">
+        </div>
+
+        <button type="submit">Filtrar</button>
+    </form>
+    
     <% discos.forEach(disco => { %>
         <li>
             <h3><%= disco.titulo %> (<%= disco.anoLancamento %>)</h3>
             <img src="<%= disco.capa %>" alt="Capa de <%= disco.titulo %>" width="100">
             <p>Gêneros: <%= disco.generos.map(g => g.nome).join(', ') %></p>
-            <p>Artistas: <%= disco.artistas.map(a => a.nome).join(', ') %></p>
+            <ul>
+                <h4>Faixas:</h4>
+                <% disco.faixas.forEach(faixa => { %>
+                    <li><%= faixa %></li>
+                <% }) %>
+            </ul>
+            <a href="/disco/edit/<%= disco._id %>">Editar</a>
+            <form action="/disco/delete/<%= disco._id %>" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('Tem certeza que deseja remover este disco?')">Remover</button>
+            </form>
+            
         </li>
     <% }) %>
 </ul>
+</div>

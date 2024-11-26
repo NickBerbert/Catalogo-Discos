@@ -1,11 +1,48 @@
 <%- include('../layout', { body: '' }) %>
+<link rel="stylesheet" href="/public/css/main.css">
+<div class="tab artistas">
 
 <h1>Lista de Artistas</h1>
+<a href="artistas/create">Adicionar Artista </a>
+<!-- Formulário de filtros -->
+<form action="/artistas" method="GET">
+    <div>
+        <label for="artista">Filtrar por Artista:</label>
+        <input type="text" id="artista" name="artista" value="<%= filtroArtista || '' %>">
+    </div>
+
+    <div>
+        <label for="titulo">Filtrar por Título do Disco:</label>
+        <input type="text" id="titulo" name="titulo" value="<%= filtroTitulo || '' %>">
+    </div>
+
+    <button type="submit">Filtrar</button>
+</form>
+
+<!-- Listagem de artistas -->
 <ul>
     <% artistas.forEach(artista => { %>
         <li>
-            <h3><%= artista.nome %></h3>
-            <p>Discos: <%= artista.discos.map(disco => disco.titulo).join(', ') %></p>
+            <h3>Nome: <%= artista.nome %></h3>
+            <p>
+                <strong>Discos:</strong>
+                <% if (artista.disco && artista.disco.length > 0) { %>
+                    <%= artista.disco.map(disco => disco.titulo).join(', ') %>
+                <% } else { %>
+                    Nenhum disco associado.
+                <% } %>
+                        <br>
+                    <!-- Botão de editar -->
+            <a href="/artistas/edit/<%= artista._id %>" method="GET">Editar</a>
+            <!-- Botão de remover -->
+            <form action="/artistas/delete/<%= artista._id %>" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('Tem certeza que deseja remover este artista?')">Remover</button>
+            </form>
+                    
+                
+            </p>
         </li>
+        
     <% }) %>
 </ul>
+</div>

@@ -1,0 +1,24 @@
+<%- include('../layout', { body: '' }) %>
+<form action="/artistas/edit/<%= artista._id %>" method="POST">
+  <label for="nome">Nome do Artista:</label>
+  <input 
+      type="text" 
+      id="nome" 
+      name="nome" 
+      value="<%= artista.nome %>" 
+      required 
+  />
+
+  <label for="discos">Discos Associados (títulos separados por vírgula):</label>
+  <select id="discos" name="discos" multiple>
+    <% discos.forEach(disco => { %>
+        <option 
+            value="<%= disco._id %>" 
+            <%= artista.disco && artista.disco.some(d => d._id.toString() === disco._id.toString()) ? 'selected' : '' %>>
+            <%= disco.titulo %>
+        </option>
+    <% }) %>
+</select>
+
+  <button type="submit">Salvar</button>
+</form>

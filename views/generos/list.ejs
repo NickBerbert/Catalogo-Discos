@@ -1,0 +1,17 @@
+<%- include('../layout', { body: '' }) %>
+<link rel="stylesheet" href="/public/css/main.css">
+<div class="tab generos">
+<ul>
+    <% generos.forEach(genero => { %>
+        <li>
+            <h3><%= genero.nome %></h3>
+            <!-- Botão de editar -->
+            <a href="/generos/edit/<%= genero._id %>">Editar</a>
+            <!-- Botão de remover -->
+            <form action="/generos/delete/<%= genero._id %>" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('Tem certeza que deseja remover este gênero?')">Remover</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
+</div>

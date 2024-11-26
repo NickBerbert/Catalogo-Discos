@@ -1,0 +1,24 @@
+<%- include('../layout', { body: '' }) %>
+
+<h1>Editar Gênero</h1>
+
+<form action="/generos/edit/<%= genero._id %>" method="POST">
+    <div style="margin-bottom: 1rem;">
+        <label for="nome">Nome do Gênero:</label>
+        <input 
+            type="text" 
+            id="nome" 
+            name="nome" 
+            value="<%= genero.nome %>" 
+            required 
+            style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;"
+        />
+    </div>
+
+    <button type="submit" style="padding: 0.5rem 1rem; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
+        Salvar
+    </button>
+    <a href="/generos" style="padding: 0.5rem 1rem; text-decoration: none; background-color: #f44336; color: white; border: none;">
+        Cancelar
+    </a>
+</form>

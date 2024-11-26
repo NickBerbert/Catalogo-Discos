@@ -1,0 +1,29 @@
+<%- include('../layout', { body: '' }) %>
+<form action="/disco/edit/<%= disco._id %>" method="POST" enctype="multipart/form-data">
+  <label for="titulo">Título:</label>
+  <input type="text" id="titulo" name="titulo" value="<%= disco.titulo %>" required>
+  
+  <label for="artista">Artista:</label>
+  <select id="artista" name="artista">
+      <% artistas.forEach(artista => { %>
+          <option value="<%= artista._id %>" <%= disco.artista?._id == artista._id ? 'selected' : '' %>>
+              <%= artista.nome %>
+          </option>
+      <% }) %>
+  </select>
+
+  <label for="anoLancamento">Ano de Lançamento:</label>
+  <input type="number" id="anoLancamento" name="anoLancamento" value="<%= disco.anoLancamento %>" required>
+
+  <label for="faixas">Faixas:</label>
+  <input type="text" id="faixas" name="faixas" value="<%= disco.faixas.join(', ') %>">
+
+  <label for="generos">Gêneros:</label>
+  <input type="text" id="generos" name="generos" value="<%= disco.generos.map(g => g.nome).join(', ') %>">
+
+  <label for="capa">Capa:</label>
+  <input type="file" id="capa" name="capa">
+  <img src="<%= disco.capa %>" alt="Capa atual" width="100">
+
+  <button type="submit">Salvar Alterações</button>
+</form>

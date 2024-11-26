@@ -1,0 +1,68 @@
+/* Styles for all tabs */
+body {
+    background-color: #f2f2f2; /* Light gray background for the entire body */
+    font-family: sans-serif; /* Set a default font */
+    color: #333; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+}
+
+.tab {
+  background-color: #fff; /* White background for tabs */
+  padding: 20px;
+  border: 1px solid #ddd; /* Lighter gray border */
+  margin-bottom: 20px;
+  border-radius: 5px; /* Rounded corners */
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);  Removed box-shadow */
+}
+
+.tab h1, .tab h2 { /* Style tab titles */
+  color: #333; /* Dark gray text */
+  margin-bottom: 10px;
+}
+
+.tab p { /* Style tab content */
+  color: #555; /* Slightly lighter gray text */
+  line-height: 1.6;
+}
+
+.tab a { /* Style tab links */
+  display: block; /* Make links fill the container */
+  padding: 10px 20px;
+  background-color: #777; /* Dark gray background */
+  color: white; /* White text */
+  text-decoration: none; /* Remove underlines */
+  border-radius: 5px; /* Rounded corners */
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  width: 100%; /* Ensure links take full width */
+  box-sizing: border-box; /* Include padding in element width */
+  display: inline-block; /* Fix for stacking issue */
+}
+
+.tab a:hover {
+  background-color: #555; /* Darker gray on hover */
+}
+
+.tab ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+.tab li {
+  margin-bottom: 10px;
+  display: block; /* Make list items block-level */
+}
+
+/* Higher specificity to override styles.css */
+main ul li {
+    display: block; /* Ensure list items are block-level */
+    margin-bottom: 10px;
+}
+
+main ul li a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
